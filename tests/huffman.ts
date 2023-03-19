@@ -127,6 +127,39 @@ test(
     )
 );
 
+test(
+    'it should return an optimal binary tree for a list of scripts with some negative weights: [1, 2, 3, -3]',
+    testLeafDistances(
+        [
+            {
+                weight: 1,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: 2,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: 3,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: -3,
+                leaf: {
+                    output: scriptBuff
+                }
+            }
+        ],
+        [3, 2, 1, 3]
+    )
+);
+
 function testLeafDistances(input: Inputs, expectedDistances: number[]) {
     return (t: ExecutionContext<unknown>) => {
         let tree = sortScriptsIntoTree(input);
