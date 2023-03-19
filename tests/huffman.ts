@@ -160,6 +160,39 @@ test(
     )
 );
 
+test(
+    'it should return an optimal binary tree for a list of scripts with some weights specified as infinity',
+    testLeafDistances(
+        [
+            {
+                weight: 1,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: Number.POSITIVE_INFINITY,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: 3,
+                leaf: {
+                    output: scriptBuff
+                }
+            },
+            {
+                weight: Number.NEGATIVE_INFINITY,
+                leaf: {
+                    output: scriptBuff
+                }
+            }
+        ],
+        [3, 1, 2, 3]
+    )
+);
+
 function testLeafDistances(input: Inputs, expectedDistances: number[]) {
     return (t: ExecutionContext<unknown>) => {
         let tree = sortScriptsIntoTree(input);
